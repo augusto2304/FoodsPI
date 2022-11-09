@@ -14,17 +14,28 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    recipeSummary: {
-      type: DataTypes.TEXT,
+    summary: {
+      type: DataTypes.STRING,
       allowNull: false,
+    },
+    dishTypes: {
+      type: DataTypes.ARRAY(DataTypes.JSONB),
     },
     healthScore: {
       type: DataTypes.INTEGER
     },
-    stepByStep: {
-      type: DataTypes.TEXT
-    }
-  });
+    steps: {
+      type: DataTypes.ARRAY(DataTypes.JSONB),
+    }, 
+    image: {
+      type: DataTypes.STRING,
+      defaultValue: "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
+    },
+
+  }
+  ,{timestamps:false}
+  );
 
 
 };
+
