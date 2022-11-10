@@ -1,3 +1,4 @@
+
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
@@ -19,10 +20,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const{getDiets} = require('./src/controllers/controller');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(3001, async () => {
+    await getDiets()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
+  
 });
