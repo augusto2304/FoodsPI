@@ -18,18 +18,15 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    dishTypes: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
-    },
     healthScore: {
       type: DataTypes.INTEGER
     },
     steps: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
+      type: DataTypes.STRING
     }, 
     image: {
       type: DataTypes.STRING,
-      defaultValue: "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
+      defaultValue: "https://img.freepik.com/foto-gratis/tabla-cortar-madera-rodeada-platos-pasta-e-ingredientes-mesa_23-2148246798.jpg?w=2000",
     },
 
   }

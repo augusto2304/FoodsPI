@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { Recipe } = require('../db');
-const{ getAll, addRecipe, getIdRecipe,getDiets} = require('../controllers/controller');
-
+const{getDiets} = require('../controllers/controller');
 
 
 router.get('/', async (req,res) => {
@@ -11,11 +9,16 @@ router.get('/', async (req,res) => {
         res.status(200).send(allDiets)
     } catch (error) {
         res.status(404).send(error.message)
-        
-    }
-})
 
+    }
+});
 
 
 
 module.exports = router
+
+
+
+
+
+

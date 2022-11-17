@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { Recipe } = require('../db');
-const{ getAll, addRecipe, getIdRecipe,getDiets} = require('../controllers/controller');
+const{ getAll, addRecipe, getIdRecipe} = require('../controllers/controller');
 
 
 
@@ -45,7 +45,7 @@ router.get("/:id", async (req, res) => {
   router.post('/' , async (req,res) => {
     try {
        await addRecipe(req.body)
-       res.status(200).send("se creo la receta")
+       res.status(200).send("Se creo la receta")
     } catch (error) {
         return res.status(404).send(error.message)
     }
