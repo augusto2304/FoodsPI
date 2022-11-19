@@ -1,0 +1,7 @@
+.banner-container{
+    width: 1920px;
+    height: 300px;
+    background-image:url(../recursos/bannerfinal.png) ;
+    background-size: 100% 100%;
+}
+

@@ -156,9 +156,10 @@ const addRecipe = async (data) => {
 
   let { name, summary, healthScore, diets, steps, image } = data
 
-  if (!name) throw new Error('Ingresar nombre de la receta.');
-  if (!summary) throw new Error('Ingresar summary de la receta');
-  if (healthScore < 0 || healthScore > 100) throw new Error('el healthScore debe ser un numero de 0 a 100');
+  if (!name) throw new Error('Name of recipe is required');
+  if(name && !/^[a-zA-Z]*$/.test(name))throw new Error ('The name cannot contain numbers or special caracters');
+  if (!summary) throw new Error('Summary of recipe is required');
+  if (healthScore < 0 || healthScore > 100) throw new Error('The Health Score must be between 0 and 100');
   healthScore = healthScore ? healthScore : 0;
 
   let recipeDb = await Recipe.findAll({

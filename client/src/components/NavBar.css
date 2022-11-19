@@ -1,0 +1,21 @@
+.nav-container{
+    border: 1px;
+    display: flex;
+    width: auto;
+    margin: auto;
+    text-align: justify;
+}
+
+.nav-brand{
+    padding-left: 100px;
+}
+.nav-links{
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-link{
+    text-align: center;
+    padding-left: 50px;
+
+}

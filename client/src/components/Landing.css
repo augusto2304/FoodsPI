@@ -1,0 +1,46 @@
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image:url(../recursos/3.png) ;
+    background-size: 100% 100%
+  }
+  
+  .btn-landing-page {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: #e33d26 ;
+    color: white ;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 0;
+    border-radius: 0.4rem;
+    box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .btn-landing-page:hover {
+    background: white;
+    color: #e33d26;
+  }
+
+  .welcome-subtitle {
+    font-family: "Lato", sans-serif;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    
+  }
+  .welcome-title {
+    font-size: 70px;
+    padding-top: 20px;
+    padding-right: 15px;
+  }

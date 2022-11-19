@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getDiets, postRecipe } from "../reducer/actions";
+import { getDiets, getRecipes, postRecipe } from "../reducer/actions";
 
 
 
@@ -9,7 +9,8 @@ import { getDiets, postRecipe } from "../reducer/actions";
 export default function CreateRecipe() {
     const dispatch = useDispatch();
     const diets = useSelector((state) => state.diets);
-    const lis = diets.map((e) => e.name);
+    const [errors, setErrors] = useState({})
+    const allRecipes = useSelector((state) => state.recipes);
 
     const [form, setForm] = useState({
         name: '',
@@ -20,12 +21,37 @@ export default function CreateRecipe() {
         diets: []
     });
 
+
+    useEffect(() => {
+        dispatch(getRecipes())
+    }, [dispatch]);
+
+
+
+    function validate(form) {
+        let errors = {};
+        if (!form.name) errors.name = 'Name of recipe is required';
+        if (form.name && !/^[a-zA-Z]*$/.test(form.name)) errors.name = 'The name cannot contain numbers or special caracters';
+        if(allRecipes.find(e => e.name === form.name)) errors.name = ('We already have a recipe with that name')
+        if (!form.summary) errors.summary = 'Summary of recipe is required';
+        if (form.healthScore < 0 || form.healthScore > 100) errors.healthScore = ('The Health Score must be between 0 and 100');
+        if (isNaN(form.healthScore)) errors.healthScore = ('The Health Score must be a number');
+        
+
+
+        return errors
+    }
+
     function handleChange(e) {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         })
-        console.log(form)
+        setErrors(validate({
+            ...form,
+            [e.target.name]: e.target.value
+        }))
+
     };
 
     function handleSelect(e) {
@@ -33,23 +59,24 @@ export default function CreateRecipe() {
             ...form,
             diets: [...form.diets, e.target.value]
         })
-        console.log(form)
+
     }
 
 
     function handleSubmit(e) {
         e.preventDefault(e);
         dispatch(postRecipe(form));
-        alert('¡Receta creada!');
-         setForm({
+        setForm({
             name: '',
             summary: '',
             image: '',
             healthScore: '',
             steps: '',
             diets: []
-        }) 
-        
+        })
+
+        alert('The recipe was created successfully')
+
     };
 
     function handleReset(e) {
@@ -61,9 +88,9 @@ export default function CreateRecipe() {
 
 
 
-    useEffect(() => {
+ /*    useEffect(() => {
         dispatch(getDiets());
-    }, []);
+    }, [dispatch]); */
 
 
 
@@ -75,25 +102,28 @@ export default function CreateRecipe() {
                 <div>
                     <label>Name:</label>
                     <input type="text" value={form.name} name='name' onChange={(e) => handleChange(e)} />
+                    {errors.name && (<p>{errors.name}</p>)}
                 </div>
                 <div>
-                    <label>Summary</label>
+                    <label>Summary:</label>
                     <input type="text" value={form.summary} name='summary' onChange={(e) => handleChange(e)} />
+                    {errors.summary && (<p>{errors.summary}</p>)}
                 </div>
                 <div>
-                    <label>Image</label>
+                    <label>Image:</label>
                     <input type="text" value={form.image} name='image' onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Health Score</label>
+                    <label>Health Score:</label>
                     <input type="number" value={form.healthScore} name='healthScore' onChange={(e) => handleChange(e)} />
+                    {errors.healthScore && (<p>{errors.healthScore}</p>)}
                 </div>
                 <div>
-                    <label>Steps</label>
+                    <label>Steps:</label>
                     <input type="text" value={form.steps} name='steps' onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Diets</label>
+                    <label>Diets:</label>
 
                     <select onChange={(e) => handleSelect(e)}>
                         {
@@ -104,14 +134,19 @@ export default function CreateRecipe() {
                             })
                         }
                     </select>
-                    <ul>
-                        <li>{form.diets.map(e => e[0].toUpperCase() + e.substring(1) + ', ')}</li>
-                    </ul>
+                    <p>{form.diets.map(e => e[0].toUpperCase() + e.substring(1) + ', ')}</p>
+
                     <button type="button" onClick={handleReset}> Reset diets</button>
                 </div>
 
-                <button type="submit">Crear receta</button>
+                
+                    <button  disabled={form.name === '' ||errors.name ||errors.summary ||errors.healthScore}>
+                        Submit
+                    </button>
+               
             </form>
         </div>
     )
 }
+
+

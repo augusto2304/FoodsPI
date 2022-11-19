@@ -1,20 +1,31 @@
 import React from 'react';
-import {useState, useEffect}  from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipes, filterRecipeByDiets, filterRecipeByOrder, filterRecipeByHs } from '../reducer/actions';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import SearchBar from './SearchBar';
+import Paginate from './Paginate';
+import NavBar from './NavBar';
+import Banner from './Banner';
 
 
 
 
 function Home() {
 
-    const dispatch = useDispatch()
-    const allRecipes = useSelector((state) => state.recipes)
-    const [order, setOrder] = useState('')
-    const [orderHs, setOrderHs] = useState('')
+    const dispatch = useDispatch();
+    const allRecipes = useSelector((state) => state.recipes);
+    const [order, setOrder] = useState('');
+    const [orderHs, setOrderHs] = useState('');
+    const [page, setPage] = useState(1);
+    const [perPage, setPerpage] = useState(9);
+    const lastIndex = page * perPage;
+    const firstIndex = lastIndex - perPage;
+    const currentRecipes = allRecipes.slice(firstIndex, lastIndex);
+    const paginate = function (pageNumber) { setPage(pageNumber) };
+    
+
 
 
     useEffect(() => {
@@ -27,34 +38,35 @@ function Home() {
         dispatch(getRecipes())
     };
 
-    function handleFilterDiets(e){
+    function handleFilterDiets(e) {
         e.preventDefault();
-        dispatch(filterRecipeByDiets(e.target.value))
+        dispatch(filterRecipeByDiets(e.target.value));
+        setPage(1)
     };
 
-    function handleFilterOrder(e){
+    function handleFilterOrder(e) {
         e.preventDefault();
         dispatch(filterRecipeByOrder(e.target.value))
-        setOrder(`Ordenado ${e.target.value}`)
+        setOrder(e.target.value) 
+        setPage(1)
     }
 
 
-    function handleFilterHs(e){
+    function handleFilterHs(e) {
         e.preventDefault();
         dispatch(filterRecipeByHs(e.target.value))
-        setOrderHs(`Ordenado ${e.target.value}`)
+        setOrderHs(e.target.value)
+        setPage(1)
     };
 
 
 
-
-// Falta input para buscar y paginado
     return (
         <div>
-            <Link to='/recipes'> Crear receta</Link>
-            <h1>Cooking recipes</h1>
+            <NavBar/>
+            <Banner/>
             <button onClick={e => { handleClick(e) }}>
-                Volver a cargar recetas
+                Refresh Recipes
             </button>
             <div>
                 <select onChange={e => handleFilterDiets(e)}>
@@ -74,26 +86,31 @@ function Home() {
                 </select>
                 <select onChange={e => handleFilterOrder(e)}>
                     <option value='all'>Order</option>
-                    <option value='asc'>Ascendente</option>
-                    <option value='des'>Descendente</option>
-                    
+                    <option value='asc'>A-Z</option>
+                    <option value='des'>Z-A</option>
+
                 </select>
                 <select onChange={e => handleFilterHs(e)}>
-                <option value='healthScore'>Health Score</option>
-                <option value='Low - High'>Low - High</option>
-                <option value='High - Low'>High - Low</option>
+                    <option value='healthScore'>Health Score</option>
+                    <option value='Low - High'>Low - High</option>
+                    <option value='High - Low'>High - Low</option>
                 </select>
 
-                <SearchBar/>
-                
+                <SearchBar paginate={paginate}/>
+
+                <Paginate page={page} perPage={perPage} allRecipes={allRecipes} paginate={paginate} />
+
                 {
-                    allRecipes?.map(e => {
-                        return(
-                        <Card name={e.name} diets={e.diets} image= {e.image} key={e.id}/>
+                    currentRecipes?.map(e => {
+                        return (
+                            <div>
+                                <Link to={`/recipes/${e.id}`}>
+                                <Card name={e.name} diets={e.diets} image={e.image} key={e.id} />
+                                </Link>
+                            </div>
                         )
                     })
                 }
-
             </div>
         </div>
     )
