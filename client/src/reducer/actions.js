@@ -62,7 +62,7 @@ export function getDetail(id) {
 export function clearDetail() {
     return {
         type: 'CLEAR_DETAIL',
-        payload: {}
+        payload: []
     }
 };
 
@@ -99,5 +99,13 @@ export function filterRecipeByHs(payload) {
     return {
         type: 'FILTER_BY_HS',
         payload
+    }
+};
+
+
+export function setCurrentPage(page){
+    return {
+        type: 'SET_CURRENT_PAGE',
+        payload: page
     }
 };

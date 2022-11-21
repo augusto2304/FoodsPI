@@ -8,14 +8,14 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-image:url(../recursos/3.png) ;
+    background-image:url(../../recursos/3.png) ;
     background-size: 100% 100%
   }
   
-  .btn-landing-page {
+  .btnlandingpage {
     margin-top: 30px;
     padding: 10px 20px;
-    background: #e33d26 ;
+    background: #940036 ;
     color: white ;
     font-size: 1rem;
     font-weight: 400;
@@ -26,12 +26,12 @@
     text-decoration: none;
     transition: 0.3s;
   }
-  .btn-landing-page:hover {
+  .btnlandingpage:hover {
     background: white;
-    color: #e33d26;
+    color: #940036;
   }
 
-  .welcome-subtitle {
+  .welcomesubtitle {
     font-family: "Lato", sans-serif;
     width: 100%;
     text-align: center;
@@ -39,7 +39,7 @@
     font-size: 18px;
     
   }
-  .welcome-title {
+  .welcometitle {
     font-size: 70px;
     padding-top: 20px;
     padding-right: 15px;

@@ -1,11 +1,11 @@
 import React from 'react';
-import "./Banner.css";
+import s from "./Banner.module.css";
 
 
 
 function Banner(){
 return(
-<div className='banner-container'></div>
+<div className={s.bannercontainer}></div>
 )
 }
 

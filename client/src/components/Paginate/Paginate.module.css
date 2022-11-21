@@ -1,0 +1,30 @@
+.paginatecontainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn{
+    text-transform: none;
+    top: 40px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    height: 25px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    color: white;
+    background: #940036;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipeByName } from "../reducer/actions";
-import "./SearchBar.css"
+import { getRecipeByName } from "../../reducer/actions";
+import s from "./SearchBar.module.css"
 
 
 
@@ -23,9 +23,9 @@ function SearchBar({paginate}) {
     };
 
     return(
-        <div className="search-container">
-            <input type="text" placeholder="Search recipe..." onChange={e => handleChange(e)} />
-            <button type="submit" onClick={e => handleSubmit(e)}>Search</button>
+        <div className={s.searchcontainer}>
+            <input className={s.input} type="text" placeholder="Search recipe..." onChange={e => handleChange(e)} />
+            <button className={s.btn} type="submit" onClick={e => handleSubmit(e)}>Search</button>
         </div>
     )
 };

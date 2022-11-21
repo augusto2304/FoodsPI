@@ -1,4 +1,5 @@
 import React from "react";
+import s from './Paginate.module.css'
 
 
 function Paginate({page,perPage, allRecipes, paginate}) {
@@ -13,11 +14,12 @@ function Paginate({page,perPage, allRecipes, paginate}) {
         if(page < totalPages) paginate(page + 1)
     };
 
+
     return(
-        <div>
-            <button onClick={previusPage}>Previus</button>
-            <p>{page} of {totalPages}</p>
-            <button onClick={nextPage}>Next</button>
+        <div className={s.paginatecontainer}>
+            <button className={s.btn} onClick={previusPage}>Prev</button>
+            <h3 className={s.pages} >{page} of {totalPages}</h3>
+            <button className={s.btn} onClick={nextPage}>Next</button>
         </div>
     )
 };
