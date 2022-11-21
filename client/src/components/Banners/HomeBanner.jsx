@@ -1,9 +1,9 @@
 import React from 'react';
-import s from "./Banner.module.css";
+import s from "./HomeBanner.module.css";
 
 
 
-function Banner(){
+function HomeBanner(){
 return(
 <div className={s.bannercontainer}></div>
 )
@@ -15,4 +15,4 @@ return(
 
 
 
-export default Banner
+export default HomeBanner

@@ -10,8 +10,8 @@ return(
         <Link to='' className={s.navbrandlink}>Recipe Book</Link>
     </div>
     <ul className={s.navlinks}>
-        <li><Link to='/home' className={s.navlink}>Home</Link></li>
-        <li><Link to='/recipes' className={s.navlink}>Create your recipe</Link></li>
+        <li className={s.li}><Link to='/home' className={s.navlink}>Home</Link></li>
+        <li className={s.li}><Link to='/recipes' className={s.navlink}>Create your recipe</Link></li>
     </ul>
 </div>
 )

@@ -1,6 +1,4 @@
-.create{
-    font-size: 50px;
-}
+
 .errors {
     color: red;
 }
@@ -14,6 +12,7 @@
     max-height: 1000px;
     margin: 0 auto;
     box-shadow: 0 0 6px rgb(0 0 0 / 15%);
+    margin-top: 50px;
     margin-bottom: 150px;
     border-radius: 0.2rem;
 }
@@ -26,6 +25,8 @@
     max-width: 500px;
     max-height: 150px;
     font-size: 12px;
+    font-weight: 400;
+    font-family: 'Lato';
     border-radius: 0.2rem;
 }
 
@@ -36,7 +37,8 @@
     text-transform: none;
     top: 20px;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: 'Lato';
     height: 30px;
     width: 500px;
     border-radius: 0.2rem;
@@ -48,30 +50,34 @@
     padding: 2px 10px;
     text-transform: none;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: 'Lato';
     height: 35px;
     width: 450px;
 }
 
 .resetbtn{
-    color: black;
-    background: white;
+    background: #940036 ;
+    color: white ;
     padding: 6px 10px;
     text-transform: none;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: 'Lato';
     height: 35px;
     border: 1px solid;
     cursor: pointer;
     border-radius: 0.2rem;
+    border: 0;
+    box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.4);
 
 }
 
 
 
 .resetbtn:hover{
-    color: white;
-    background: #940036;
+    background: white;
+    color: #940036;
 }
 
 .submitbtn{
@@ -81,6 +87,7 @@
     color: white ;
     font-size: 1rem;
     font-weight: 400;
+    font-family: 'Lato';
     border: 0;
     border-radius: 0.4rem;
     box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.4);
@@ -92,6 +99,13 @@
 .submitbtn:hover{
     background: white;
     color: #940036;
+} 
+
+.submitbtn:disabled{
+    background: white;
+    color: lightgrey;
+    font-weight: 400;
+    font-family: 'Lato';
 }
 
 .labels{

@@ -16,7 +16,8 @@
     text-transform: none;
     top: 40px;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: 'Lato';
     height: 40px;
     cursor: pointer;
     border-radius: 0.2rem;
@@ -26,18 +27,21 @@
     text-transform: none;
     top: 40px;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: 'Lato';
     height: 41px;
-    color: black;
-    background: white;
-    border: 1px solid black;
+    background: #940036 ;
+    color: white ;
+    border: 0;
     cursor: pointer;
     border-radius: 0.2rem;
+    box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.4);
+
 }
 
 .resetbtn:hover{
-    color: white;
-    background: #940036;
+    background: white;
+    color: #940036;
 }
 
 

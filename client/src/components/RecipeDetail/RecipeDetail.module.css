@@ -1,16 +1,16 @@
-
+.maincontainer{
+    background-image:url(../../recursos/RecipeDetailbackground.png);
+    padding: 25px 0px  25px 0px;
+}
 .recipecontainer{
     width: 1400px;
     height: auto;
     max-height: 2000px;
     box-shadow: 0 0 6px rgb(0 0 0 / 15%);
     margin-left: 200px;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-bottom: 60px;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-bottom: 30px;
-    padding-top: 10px;
+    padding:50px 75px 50px 75px;
     background-color: white;
     border-radius: 0.2rem;
 
@@ -34,10 +34,7 @@
 } 
 
 
-.healthdiets{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.namehealthdiets{
     height: 500px;
     width: 680px;
     margin-bottom: 5px;
@@ -45,21 +42,29 @@
     margin-right: 40px;
     box-shadow: 0 0 6px rgb(0 0 0 / 50%);
     border-radius: 0.2rem;
-    
-    
-    
+}
+
+.name{
+    margin: 110px 20px 50px 20px;
 }
 
 .diets{
-    margin-top: 150px;
-    margin-left: 10px;
+    margin: 75px 20px 50px 20px;
+
 }
 
 .healthscore{
-    margin-bottom: 150px;
-    margin-left: 10px;
-
+    margin: 75px 20px 50px 20px;
 }
+
+.loadingcontainer{
+    height: 1400px;
+    width: 2000px;
+    margin-top: 330px;
+    font-size: 35px;
+}
+
+
 
 
 .summarycontainer{
@@ -70,6 +75,7 @@
     margin-top: 30px;
     border-radius: 0.2rem;
     padding: 10px 30px 10px 30px;
+    white-space: pre-line
     
 }
 
@@ -78,8 +84,9 @@
     height: auto;
     max-height: 2000px;
     box-shadow: 0 0 6px rgb(0 0 0 / 15%);
-    margin-top: 30px;
+    margin-top: 15px;
     border-radius: 0.2rem;
     padding: 10px 30px 10px 30px;
+    white-space: pre-line
 }
 

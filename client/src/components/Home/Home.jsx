@@ -7,7 +7,7 @@ import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginate from '../Paginate/Paginate';
 import NavBar from '../NavBar/NavBar';
-import Banner from '../Banner/Banner';
+import HomeBanner from '../Banners/HomeBanner';
 import s from './Home.module.css';
 
 
@@ -38,6 +38,7 @@ function Home() {
     function handleClick(e) {
         e.preventDefault();
         dispatch(getRecipes())
+        setPage(1)
     };
 
     function handleFilterDiets(e) {
@@ -66,7 +67,7 @@ function Home() {
     return (
         <div>
             <NavBar />
-            <Banner />
+            <HomeBanner />
             <div className={s.filterscontainer}>
                 <SearchBar paginate={paginate} />
 

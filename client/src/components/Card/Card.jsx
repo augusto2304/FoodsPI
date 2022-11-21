@@ -12,7 +12,7 @@ function Card ({name,diets,image}){
             <img src={image} className={s.image} alt="not found"/>
             <div className={s.info}>
             <h3 className={s.name}>{name}</h3>
-            <h5 className={s.diets}>{diets.map(e => Handlediet(e))}</h5>
+            <h5 className={s.diets}>{diets.map(e => Handlediet(e.charAt(0).toUpperCase() + e.slice(1) + " "))}</h5>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getDiets, getRecipes, postRecipe } from "../../reducer/actions";
-import Banner from "../Banner/Banner";
+import CreateBanner from "../Banners/CreateBanner";
 import NavBar from "../NavBar/NavBar"
 import s from './CreateRecipe.module.css'
 
@@ -52,8 +52,8 @@ export default function CreateRecipe() {
             ...form,
             [e.target.name]: e.target.value
         }))
-
     };
+
 
     function handleSelect(e) {
         setForm({
@@ -93,11 +93,8 @@ export default function CreateRecipe() {
         <div>
             {console.log(diets)}
             <NavBar />
-            <Banner />
-
-            <h1 className={s.create}>Create your recipe</h1>
-
-
+            <CreateBanner />
+            
             <form className={s.formcontainer} onSubmit={(e) => handleSubmit(e)}>
                 <label className={s.labels}>Name:</label>
 
@@ -139,12 +136,12 @@ export default function CreateRecipe() {
 
                 <label className={s.labels} >Steps:</label>
                 <div>
-                    <textarea textarea className={s.textarea} type="text" value={form.steps} name='steps' onChange={(e) => handleChange(e)} />
+                    <textarea className={s.textarea} type="text" value={form.steps} name='steps' onChange={(e) => handleChange(e)} />
                 </div>
 
                 
 
-                <button  className={s.submitbtn} disabled={form.name === '' || errors.name || errors.summary || errors.healthScore}>
+                <button className={s.submitbtn} disabled={form.name === '' || errors.name || errors.summary || errors.healthScore}>
                     Submit
                 </button>
 
