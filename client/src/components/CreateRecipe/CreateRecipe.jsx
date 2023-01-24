@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { getDiets, getRecipes, postRecipe } from "../../reducer/actions";
+import { useHistory } from "react-router-dom";
+import { getDiets, postRecipe } from "../../reducer/actions";
 import CreateBanner from "../Banners/CreateBanner";
 import NavBar from "../NavBar/NavBar"
 import s from './CreateRecipe.module.css'
@@ -11,6 +11,7 @@ import s from './CreateRecipe.module.css'
 
 export default function CreateRecipe() {
     const dispatch = useDispatch();
+    const history = useHistory()
     const diets = useSelector((state) => state.diets);
     const [errors, setErrors] = useState({})
     const allRecipes = useSelector((state) => state.recipes);
@@ -75,8 +76,9 @@ export default function CreateRecipe() {
             steps: '',
             diets: []
         })
+        alert('The recipe was created successfully');
 
-        alert('The recipe was created successfully')
+        history.push('/home')
 
     };
 
@@ -94,7 +96,7 @@ export default function CreateRecipe() {
             {console.log(diets)}
             <NavBar />
             <CreateBanner />
-            
+
             <form className={s.formcontainer} onSubmit={(e) => handleSubmit(e)}>
                 <label className={s.labels}>Name:</label>
 

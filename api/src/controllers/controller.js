@@ -2,10 +2,12 @@ const axios = require('axios');
 const { API_KEY } = process.env;
 const { Recipe, Diets } = require('../db');
 
-//Traer info de API
+
+
 //   https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5/information&number=100
 //   https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100
 
+//Traer info de API
 const getApi = async () => {
   try {
     const apiUrl = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5/information&number=100`)
@@ -68,8 +70,6 @@ const getAll = async () => {
   }
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 
@@ -85,42 +85,10 @@ const getIdRecipe = async (id) => {
       },
     });
 
-    /*      const idInfoDb =  {
-            name: idDb.name,
-            summary: idDb.summary,
-            healthScore: idDb.healthScore,
-            dishTypes: idDb.dishTypes?.map((e) => e),
-            diets: idDb.diets?.map((e) => e.name), 
-            steps: idDb.steps,
-            image: idDb.image,
-          }; */
-
-
     return idDb
   }
   else {
     const idUrl = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
-
-
-    /*  https://api.spoonacular.com/recipes/{id}/information */
-    /*  const filter = idUrl.data.results.filter(e => e.id.toString() === id) */
-
-
-    /*  const idInfo = {
-      name: filter.title,
-      summary: filter.summary,
-      dishTypes: filter.dishTypes?.map((e) => e),
-      healthScore: filter.healthScore,
-      diets: filter.diets,
-      steps: filter.analyzedInstructions[0]?.steps.map((e) => {
-          return {
-            number: e.number,
-            step: e.step,
-          };
-        }),
-        image: filter.image,
-    }; */
-
 
     const idInfo = {
       name: idUrl.data.title,
@@ -157,7 +125,7 @@ const addRecipe = async (data) => {
   let { name, summary, healthScore, diets, steps, image } = data
 
   if (!name) throw new Error('Name of recipe is required');
-  if(name && !/^[a-zA-Z]*$/.test(name))throw new Error ('The name cannot contain numbers or special caracters');
+  if(name && !/^[a-zA-Z" "]*$/.test(name))throw new Error ('The name cannot contain numbers or special caracters');
   if (!summary) throw new Error('Summary of recipe is required');
   if (healthScore < 0 || healthScore > 100) throw new Error('The Health Score must be between 0 and 100');
   healthScore = healthScore ? healthScore : 0;
@@ -174,7 +142,7 @@ const addRecipe = async (data) => {
       summary,
       healthScore,
       steps,
-      image
+      image : image || 'https://img.freepik.com/foto-gratis/tabla-cortar-madera-rodeada-platos-pasta-e-ingredientes-mesa_23-2148246798.jpg?w=2000'
     });
     console.log(data)
 
@@ -186,27 +154,11 @@ const addRecipe = async (data) => {
       await newRecipe.addDiets(dietDb[0].id)
     }
     return newRecipe
-
-    /*     let dietDb = await Diets.findAll({
-           where: { name: diets.toLowerCase()}
-         });
-       
-         await newRecipe.addDiets(dietDb);
-       
-         return newRecipe */
-
-
-
   } else {
     throw new Error('La receta ya existe')
   }
 
 };
-
-/* for(let i=0; i<diets.length; i++){
-  const newD = await Diet.findOrCreate({where: {name:diets[i]}})
-  await newR.addDiet(newD[0].id)
-} */
 
 
 // Traer todas las diets

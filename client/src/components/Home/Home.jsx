@@ -34,6 +34,7 @@ function Home() {
         dispatch(getRecipes())
     }, [dispatch]);
 
+    
 
     function handleClick(e) {
         e.preventDefault();
@@ -61,6 +62,11 @@ function Home() {
         setOrderHs(e.target.value)
         setPage(1)
     };
+
+    function handleId(){
+        document.documentElement.scrollTop = 0;
+    }
+
 
 
 
@@ -113,7 +119,7 @@ function Home() {
                     currentRecipes?.map(e => {
                         return (
                             <div>
-                                <Link className={s.link} to={`/recipes/${e.id}`}>
+                                <Link className={s.link} to={`/recipes/${e.id}`} onClick={handleId}>
                                     <Card name={e.name} diets={e.diets} image={e.image} key={e.id} />
                                 </Link>
                             </div>

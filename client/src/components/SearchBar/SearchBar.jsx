@@ -20,11 +20,12 @@ function SearchBar({paginate}) {
         e.preventDefault();
         dispatch(getRecipeByName(name))
         paginate(1)
+        setName("")
     };
 
     return(
         <div className={s.searchcontainer}>
-            <input className={s.input} type="text" placeholder="Search recipe..." onChange={e => handleChange(e)} />
+            <input className={s.input} value={name} type="text" placeholder="Search recipe..." onChange={e => handleChange(e)} />
             <button className={s.btn} type="submit" onClick={e => handleSubmit(e)}>Search</button>
         </div>
     )
